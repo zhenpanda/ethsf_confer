@@ -17,7 +17,6 @@ html {
 .container .row {
     margin: 0 !important; 
 }
-
 .clean-pad {
     margin: 0 !important;
     padding: 0 !important;
@@ -29,23 +28,166 @@ html {
 
 .title {
     font-size: 3.75em;
-    padding-top: 10em;
-    color:white;
-    text-shadow: 0.05em 0.05em #2573a0;
-    margin-left: 1.5em;
+    padding-top: 9.5em;
+    color: #ffffff;
+    text-shadow: 0.025em 0.025em #2573a0;
+    margin-left: 2em;
     font-family: 'Rajdhani';
 }
 .details {
-    color: white;
-    font-size: 1.5em;
-    text-shadow: 0.05em 0.05em #2573a0;
+    border: 0.1em solid white;
+    background: white;
+    padding: 1em;
+    color: #2690b9;
+    font-size: 1.65em;
+    font-family: 'Rajdhani';
 }
 .enter {
     text-align: center;
     margin-top: 2em;
-    margin-left: 6.5em;
+    margin-left: 8.5em;
     width: 12em;
 }
+
+// header
+.section {
+    margin-top: 2em;
+    height: 5em;
+    padding: 0.8em;
+    font-family: 'Rajdhani';
+    cursor: pointer;
+    .name {
+        margin-top: 0.05em;
+        font-size: 2em;
+        color: #2ca6d6;
+        text-align: center; 
+    }
+}
+.target {
+    .name {
+        color: white;
+        text-shadow: 0.025em 0.025em #1c6377;
+    }
+    border: 0.1em solid #2ca6d6;
+    background: #2ca6d6;
+}
+.mid-section {
+    margin-top: 2em;
+    height: 5em;
+    padding: 1em; 
+    border: 0.1em solid #2ca6d6;
+    font-family: 'Rajdhani';
+}
+.label {
+    margin-top: 0.05em;
+    font-size: 1.75em;
+    color: #2ca6d6;
+    text-align: center;
+}
+.icon {
+    margin-left: 0.25em;
+    font-size: 0.85em;
+}
+.icon:hover {
+    opacity: 0.8;
+}
+
+// body
+.wallet {
+    margin-top: 1em;
+    border-radius: 0.75em;
+    border: 0.08em solid #94d5f3;
+    height: 48em;
+}
+.hidden {
+    display: none;
+    height: 48em; 
+}
+.explorer {
+    margin-top: 1em;
+    height: 48em;
+    background: #e3f3fa;
+    border: 0.1em solid #a9e5fd;
+}
+
+.head-piece {
+    height: 34mm;
+    border-radius: 0.75em;
+    border: 0.1em solid #ffffff;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2ca6d6+0,00b7ea+100 */
+    background: #3bb3e2; /* Old browsers */
+    background: -moz-linear-gradient(left, #71d4fc 0%, #1eb5df 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #5cbfe6 0%,#1eb5df 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #5cbfe6 0%,#1eb5df 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ca6d6', endColorstr='#00b7ea',GradientType=1 ); /* IE6-9 */
+    z-index: -1;
+
+    .top-text {
+        margin-top: 1em;
+        font-size: 1.55em;
+        color: white;
+        text-shadow: 0.025em 0.025em #1c6377;
+    }
+    .mid-text {
+        margin-top: 0em;
+        font-size: 1.2em;
+        color: #ffffff;
+        font-weight: 300;
+    }
+    .money-text {
+        margin-top: 4.1em;
+        color: white;
+    }
+}
+.info {
+    height: 20em;
+    background: white;
+    border-bottom: 0.1em solid #94d5f3;
+    position: relative;
+    z-index: 10;
+
+    .input-block {
+        margin: 0.25em;
+        height: 5em;
+        border-bottom: 0.1em solid #afe1f8;
+    }
+    .input-area {
+        margin-top: 0.5em;
+        height: 3em;
+        border: 0.1em solid #94d5f3;
+    }
+    .input-field {
+        margin-top: -0.1em;
+    }
+    .input-text {
+        margin-top: 1.1em;
+        font-size: 1.1em;    
+        color: #3189b3;
+    }
+    .icon {
+        margin-right: 0.5em;
+    }
+    input:not([type]) {
+        margin-left: 1.5em;
+        color: #3189b3;
+        border-bottom: none;
+        width: 70%;
+    }
+    input:not([type]):focus:not([readonly]) {
+        box-shadow: none;
+        border-bottom: none;
+    }
+    .input-address {
+        margin: 0.25em;
+        height: 5em;
+        border-bottom: 0.1em solid #afe1f8;
+    }
+}
+.lower {
+    height: 18em;
+    background: #f7f7f7;
+}
+
 
 // container media sizes
 .container { 

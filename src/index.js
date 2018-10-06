@@ -17,6 +17,7 @@ import './assets/css/shared.css';
 
 // basic user pages
 import Home from './pages/Home';
+import Trade from './pages/Trade';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const history = createBrowserHistory();
@@ -27,6 +28,7 @@ ReactDOM.render(
 
       <Switch>
         <Route exact path='/' component={ Home } />
+        <Route exact path='/trade' component={ Trade } />
       </Switch>
 
     </Router>
