@@ -1,0 +1,84 @@
+/* Mixed-ins */
+/* global colors */
+@font-face {
+  font-family: 'Rajdhani';
+  src: url("../fonts/Rajdhani-Regular.ttf"); }
+
+html {
+  background-color: white; }
+  html a:visited {
+    color: white; }
+  html a, html u {
+    border-bottom: none; }
+
+.container .row {
+  margin: 0 !important; }
+
+.clean-pad {
+  margin: 0 !important;
+  padding: 0 !important; }
+
+.thin-pad {
+  margin: 0 !important;
+  padding: 0.05em 0.1em 0.05em 0.1em !important; }
+
+.title {
+  font-size: 3.75em;
+  padding-top: 10em;
+  color: white;
+  text-shadow: 0.05em 0.05em #2573a0;
+  margin-left: 1.5em;
+  font-family: 'Rajdhani'; }
+
+.details {
+  color: white;
+  font-size: 1.5em;
+  text-shadow: 0.05em 0.05em #2573a0; }
+
+.enter {
+  text-align: center;
+  margin-top: 2em;
+  margin-left: 6.5em;
+  width: 12em; }
+
+@media only screen and (max-width: 27em) {
+  .container {
+    min-width: 85em; } }
+
+@media only screen and (min-width: 27.6em) and (max-width: 55.6em) {
+  .container {
+    min-width: 85em; } }
+
+@media only screen and (min-width: 55.7em) and (max-width: 74.1em) {
+  .container {
+    min-width: 85em; } }
+
+@media only screen and (min-width: 74.1em) and (max-width: 98.8em) {
+  .container {
+    width: 100%; } }
+
+@media only screen and (min-width: 98.9em) and (max-width: 117.3em) {
+  .container {
+    width: 90%; } }
+
+@media only screen and (min-width: 117.4em) {
+  .container {
+    max-width: 85em; } }
+
+.bg-wrapper {
+  width: 100%;
+  height: 100vh;
+  background-image: url("../../assets/images/bluebg.png");
+  background-size: 100% 100%; }
+  @media only screen and (min-width: 55.7em) and (max-width: 74.1em) {
+    .bg-wrapper {
+      background-position: center;
+      background-attachment: fixed; } }
+  @media only screen and (min-width: 98.9em) and (max-width: 117.3em) {
+    .bg-wrapper {
+      background-position: center;
+      background-attachment: fixed; } }
+  @media only screen and (min-width: 117.4em) {
+    .bg-wrapper {
+      background-position: center;
+      background-attachment: fixed; } }

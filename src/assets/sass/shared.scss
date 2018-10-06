@@ -1,0 +1,94 @@
+@import "./_responsive.scss";
+@import "./_variables.scss";
+
+@font-face {
+    font-family: 'Rajdhani';
+    src: url("../fonts/Rajdhani-Regular.ttf");
+}
+
+html {
+    background-color: white;
+
+    a:visited { color: white}
+    a, u { border-bottom: none }
+}
+
+// selector reset
+.container .row {
+    margin: 0 !important; 
+}
+
+.clean-pad {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.thin-pad {
+    margin: 0 !important;
+    padding: 0.05em 0.1em 0.05em 0.1em !important; 
+}
+
+.title {
+    font-size: 3.75em;
+    padding-top: 10em;
+    color:white;
+    text-shadow: 0.05em 0.05em #2573a0;
+    margin-left: 1.5em;
+    font-family: 'Rajdhani';
+}
+.details {
+    color: white;
+    font-size: 1.5em;
+    text-shadow: 0.05em 0.05em #2573a0;
+}
+.enter {
+    text-align: center;
+    margin-top: 2em;
+    margin-left: 6.5em;
+    width: 12em;
+}
+
+// container media sizes
+.container { 
+
+    @include responsive (phone-small) {
+        min-width: 85em;
+    }; 
+    @include responsive (phone) {
+        min-width: 85em;
+    }; 
+    @include responsive (ipad) {
+        min-width: 85em;
+    }; 
+    @include responsive (laptop) {
+        width: 100%;
+    }; 
+    @include responsive (desktop) {
+        width: 90%;
+    }; 
+    @include responsive (desktop-large) {
+        max-width: 85em;
+    }; 
+}
+.bg-wrapper {
+    width: 100%; 
+    height: 100vh;
+    background-image: url("../../assets/images/bluebg.png");
+    background-size: 100% 100%;
+
+    @include responsive (phone-small) {
+    }; 
+    @include responsive (phone) {
+    }; 
+    @include responsive (ipad) {
+        background-position: center;
+        background-attachment: fixed;
+    };
+    @include responsive (desktop) {
+        background-position: center;
+        background-attachment: fixed;
+    }; 
+    @include responsive (desktop-large) {
+        background-position: center;
+        background-attachment: fixed;
+    }; 
+}

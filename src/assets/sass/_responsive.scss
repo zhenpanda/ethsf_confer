@@ -1,0 +1,39 @@
+/* Mixed-ins */
+@mixin responsive ($breakpoint) {
+    // 320px
+    @if $breakpoint == phone-small {
+        @media only screen and (max-width: 27em) {
+            @content;
+        }
+    }
+    // 414px
+    @else if $breakpoint == phone {
+        @media only screen and (min-width: 27.6em) and (max-width: 55.6em)  {
+            @content;
+        }
+    }
+    // 836px
+    @else if $breakpoint == ipad {
+        @media only screen and (min-width: 55.7em) and (max-width: 74.1em)  {
+            @content;
+        }
+    }
+    // 1113px <-> 1482px
+    @else if $breakpoint == laptop {
+        @media only screen and (min-width: 74.1em) and (max-width: 98.8em)  {
+            @content;
+        }
+    }
+    // 1483.5px <-> 1759.5px
+    @else if $breakpoint == desktop {
+        @media only screen and (min-width: 98.9em) and (max-width: 117.3em) {
+            @content;
+        }
+    }
+    // 1761px <-> 1920px 
+    @else if $breakpoint == desktop-large {
+        @media only screen and (min-width: 117.4em)  {
+            @content;
+        }
+    }
+}
