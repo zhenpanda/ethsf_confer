@@ -22,10 +22,6 @@ def int_to_bytes(value, length):
 
     return result
 
-def gen_random_bytes(n):
-    # return [random.randint(0, 255) for i in xrange(n)]
-    return [0 for i in xrange(n)]
-
 def words_to_bytes(arr):
     return sum(([x >> 24, (x >> 16) & 0xff, (x >> 8) & 0xff, x & 0xff] for x in arr), [])
 
@@ -60,8 +56,15 @@ def generate_sha256_gadget_tests(s):
     print ' '.join(bits_val(hash))
 
 if __name__ == '__main__':
-    random.seed(0) # for reproducibility
     print "0"
     generate_sha256_gadget_tests(0)
     print "1"
     generate_sha256_gadget_tests(1)
+    print "2"
+    generate_sha256_gadget_tests(2)
+    print "4"
+    generate_sha256_gadget_tests(4)
+    print "256 + 1"
+    generate_sha256_gadget_tests(256 + 1)
+    print "2**32 - 1"
+    generate_sha256_gadget_tests(2 ** 32 - 1)

@@ -1,0 +1,8 @@
+def main(field a31, field a30, field a29, field a28, field a27, field a26, field a25, field a24, field a23, field a22, field a21, field a20, field a19, field a18, field a17, field a16, field a15, field a14, field a13, field a12, field a11, field a10, field a9, field a8, field a7, field a6, field a5, field a4, field a3, field a2, field a1, field a0, field b31, field b30, field b29, field b28, field b27, field b26, field b25, field b24, field b23, field b22, field b21, field b20, field b19, field b18, field b17, field b16, field b15, field b14, field b13, field b12, field b11, field b10, field b9, field b8, field b7, field b6, field b5, field b4, field b3, field b2, field b1, field b0) -> (field):
+
+field a = (((((((((((((((((((((((((((((((a31 * 2 + a30) * 2 + a29) * 2 + a28) * 2 + a27) * 2 + a26) * 2 + a25) * 2 + a24) * 2 + a23) * 2 + a22) * 2 + a21) * 2 + a20) * 2 + a19) * 2 + a18) * 2 + a17) * 2 + a16) * 2 + a15) * 2 + a14) * 2 + a13) * 2 + a12) * 2 + a11) * 2 + a10) * 2 + a9) * 2 + a8) * 2 + a7) * 2 + a6) * 2 + a5) * 2 + a4) * 2 + a3) * 2 + a2) * 2 + a1) * 2 + a0)
+field b = (((((((((((((((((((((((((((((((b31 * 2 + b30) * 2 + b29) * 2 + b28) * 2 + b27) * 2 + b26) * 2 + b25) * 2 + b24) * 2 + b23) * 2 + b22) * 2 + b21) * 2 + b20) * 2 + b19) * 2 + b18) * 2 + b17) * 2 + b16) * 2 + b15) * 2 + b14) * 2 + b13) * 2 + b12) * 2 + b11) * 2 + b10) * 2 + b9) * 2 + b8) * 2 + b7) * 2 + b6) * 2 + b5) * 2 + b4) * 2 + b3) * 2 + b2) * 2 + b1) * 2 + b0)
+
+field out = if b < a then 1 else 0 fi
+
+return out
