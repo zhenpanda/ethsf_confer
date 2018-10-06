@@ -1,0 +1,15 @@
+{
+  "name": "zokrates",
+  "version": "1.0.0",
+  "description": "``` docker run -ti -v $HOME/workspace/ethsf_confer:/tmp zokrates /bin/bash",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hasha": "^3.0.0"
+  }
+}
