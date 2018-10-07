@@ -110,6 +110,17 @@ html {
     height: 8em;
     margin: 1em;
     background: white; }
+  .explorer .send-proof-final {
+    border-radius: 0.75em;
+    border: 0.1em solid #94d5f3;
+    height: 8em;
+    margin: 1em;
+    background: #2ca6d6;
+    padding: 1em; }
+    .explorer .send-proof-final .person {
+      color: #cde5f0; }
+    .explorer .send-proof-final .amount {
+      color: white; }
   .explorer .person {
     padding: 1em;
     color: #177aa1; }

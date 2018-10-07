@@ -21,7 +21,7 @@ class WalletToo extends Component {
                     <div className="row">
                         <div className="col s1 m1" />
                         <div className="col s6 m6">
-                            <div className="input-text"><span className="fa fa-paper-plane-o icon" /> Recive Amount:</div>
+                            <div className="input-text"><span className="fa fa-paper-plane-o icon" /> Receiver Amount:</div>
                         </div>
                         <div className="col s3 m3">
                             <div className="input-area-two">
@@ -35,7 +35,7 @@ class WalletToo extends Component {
                     <div className="row">
                         <div className="col s1 m1" />
                         <div className="col s5 m5">
-                            <div className="input-text"><span className="fa fa fa-address-book-o icon" /> Sender Address:</div>
+                            <div className="input-text"><span className="fa fa fa-address-book-o icon" /> Send Address:</div>
                         </div>
                         <div className="col s6 m6">
                             <div className="input-area-two">

@@ -31,7 +31,14 @@ export function makeProofToo() {
     return function(dispatch) {
     console.log("Trigger makeProof...");
     let data = 
-      ``;
+      `A = Pairing.G1Point(0x23212100692da7890bd60e50c1f70d7fd17ea1924b1d892ec98c9a414d2643fb, 0x2bb05073fd5da4a421b91194a882a68c165edd599808dd2210e0d28d7adc0a0a);
+      A_p = Pairing.G1Point(0x1efeb7f60637e1a02ab6c6e56c9f2a62391b1b3b01828681a2eb8ede6e1c934c, 0x2d8b3a6ceca9e1c469c61775182e32fbd4da5faf12c3556ef4478937445acb43);
+      B = Pairing.G2Point([0x1d096c9c45ee978859f15ee6105f6667dd1b43be580cc458437c64bdbb9a5e, 0x26fe47a23ab1852fbd8bfb841332c777f07bb3b8287d0a3c9b1ed0858cada8dc], [0x2a6c829b65420bd32a49e522a143736b5c08d25e3c3f1b32b8994b049e14adc9, 0x28fd59e621244d9ad15831fe651ea549c5310c75c1b37fedd74e6bd8f9f3508b]);
+      B_p = Pairing.G1Point(0x29df5843ef74ba3f4f943ff5a5a0b1cba036bdba71dcd8caa4ac7037c083bb7, 0x2a5b88dd175ce51fa82734b85ac144245900219615f2662f7c668ac883a96ea2);
+      C = Pairing.G1Point(0x1c1c5c72b42683334e0bdaaaa959bef7f795850580692ec8f8c7ce1ddbb61cd8, 0x1b4f5bd4a165203b16e4761e2698bd99cc2b437d32165a3a337ee8a5f05d556);
+      C_p = Pairing.G1Point(0xaa8604b95adf310aeee5b33d91dea5ed7c92be44a6849a345980de5c85f35b3, 0x2b8009ba783c6433aba1aa35f1a55b4096ee3a9cad37020dabb950fd30eac3a0);
+      H = Pairing.G1Point(0x2962b58b6a552d5844d5c33332dad2aac10e876966d84864ee510d8ff53166fb, 0x309e4794fb1f5fa731afd74040baf399cae18a15dd5128e9912114e98199ced);
+      K = Pairing.G1Point(0x844d46061e9b7f48680869d811ad53b54c2f306fd10861d25118550eda2502c, 0x2da8701c62974fc92ea0d40ac77ee44aac07105302d6aea7c127bba7a33e46b9);`;
       dispatch({
         type: PROOF_TOO,
         payload: data

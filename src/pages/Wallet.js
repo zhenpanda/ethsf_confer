@@ -14,35 +14,86 @@ class Wallet extends Component {
         },2000)
     }
 
-    displaySendProof(makeProof) {
-        return(
-            <div className="info moveFromTopFade delay300">
+    displaySendProof(makeProof,stage) {
+        console.log(stage);
+        if(stage === undefined || stage === "first") {
+            return(
+                <div className="info moveFromTopFade delay300">
+                    <div className="input-block">
+                        <div className="row">
+                            <div className="col s1 m1" />
+                            <div className="col s5 m5">
+                                <div className="input-text"><span className="fa fa-paper-plane-o icon" /> Send Amount:</div>
+                            </div>
+                            <div className="col s3 m3">
+                                <div className="input-area">
+                                    <div className="input-field">
+                                        <input />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col s4 m4" />
+                        </div>
+                    </div>
+                    <div className="input-address">
+                        <div className="row">
+                            <div className="col s1 m1" />
+                            <div className="col s5 m5">
+                                <div className="input-text"><span className="fa fa fa-address-book-o icon" /> Send Address:</div>
+                            </div>
+                            <div className="col s6 m6">
+                                <div className="input-area">
+                                    <div className="input-field">
+                                        <input />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col s1 m1" />
+                        </div>
+                    </div>
+                    <div className="btn-options-area">
+                        <div className="row">
+                            <div className="col s1 m1" />
+                            <div className="col s5 m5">
+                                <div className="create-proof-btn"
+                                onClick={() => this.showAnim(makeProof)}>Create Proof Data</div>
+                            </div>
+                            <div className="col s5 m5">
+                                <div className="create-send-btn"
+                                onClick={() =>this.props.moveStage("first")}>Send Tx Msg</div>
+                            </div> 
+                            <div className="col s1 m1" /> 
+                        </div>
+                    </div>
+                </div>
+            )
+        }else if(stage === "second") {
+            return(
+                <div className="info moveFromTopFade delay300">
                 <div className="input-block">
                     <div className="row">
                         <div className="col s1 m1" />
-                        <div className="col s5 m5">
-                            <div className="input-text"><span className="fa fa-paper-plane-o icon" /> Send Amount:</div>
+                        <div className="col s6 m6">
+                            <div className="input-text"><span className="fa fa-paper-plane-o icon" />Recive Proof:</div>
                         </div>
                         <div className="col s3 m3">
-                            <div className="input-area">
-                                <div className="input-field">
-                                    <input />
-                                </div>
+                            <div className="input-area-two">
+                                <div className="input-text-display"><span className="fa fa-check" /></div>
                             </div>
                         </div>
-                        <div className="col s4 m4" />
+                        <div className="col s3 m3" />
                     </div>
                 </div>
                 <div className="input-address">
                     <div className="row">
                         <div className="col s1 m1" />
                         <div className="col s5 m5">
-                            <div className="input-text"><span className="fa fa fa-address-book-o icon" /> Send Address:</div>
+                            <div className="input-text"><span className="fa fa fa-address-book-o icon" />Receiver Address:</div>
                         </div>
                         <div className="col s6 m6">
-                            <div className="input-area">
+                            <div className="input-area-two">
                                 <div className="input-field">
-                                    <input />
+                                    <input defaultValue="0x24e6429ad5d8d1efc64f03ada043fdbd5a405cd23f40264ddd6dbce28863554c"/>
                                 </div>
                             </div>
                         </div>
@@ -53,43 +104,46 @@ class Wallet extends Component {
                     <div className="row">
                         <div className="col s1 m1" />
                         <div className="col s5 m5">
-                            <div className="create-proof-btn"
-                            onClick={() => this.showAnim(makeProof)}>Create Proof Data</div>
                         </div>
                         <div className="col s5 m5">
                             <div className="create-send-btn"
-                            onClick={() =>this.props.moveStage("first")}>Send Tx Msg</div>
+                            onClick={() =>this.props.moveStage("third")}>
+                            Sumbit Tx Msg</div>
                         </div> 
                         <div className="col s1 m1" /> 
                     </div>
                 </div>
             </div>
-        )
-    }
-    displayRecivedData(proof) {
-        // console.log(proof);
-        if(proof) {
-            return(
-                <div className="lower">
-                    <Scrollbars
-                        autoHide
-                        autoHideTimeout={1000}
-                        autoHideDuration={200}
-                        autoHeight
-                        autoHeightMin={0}
-                        autoHeightMax={255}
-                        
-                        thumbMinSize={30}
-                        universal={true}>
-                        
-                        <div className="proof-data moveFromTopFade delay80">{proof}</div>
-
-                    </Scrollbars>
-                </div>
             )
-        }else{
-            <div />
         }
+        
+    }
+    displayRecivedData(proof,stage) {
+        // console.log(proof);
+        if(stage !== "third") {
+            if(proof) {
+                return(
+                    <div className="lower">
+                        <Scrollbars
+                            autoHide
+                            autoHideTimeout={1000}
+                            autoHideDuration={200}
+                            autoHeight
+                            autoHeightMin={0}
+                            autoHeightMax={255}
+                            
+                            thumbMinSize={30}
+                            universal={true}>
+                            
+                            <div className="proof-data moveFromTopFade delay80">{proof}</div>
+    
+                        </Scrollbars>
+                    </div>
+                )
+            }else{
+                <div />
+            }
+        } 
     }
 
     render() {
@@ -121,9 +175,9 @@ class Wallet extends Component {
                         </div>
                     </div>
 
-                    {this.displaySendProof(this.props.makeProof)}
+                    {this.displaySendProof(this.props.makeProof, this.props.stage)}
 
-                    {this.displayRecivedData(this.props.proof)}
+                    {this.displayRecivedData(this.props.proof, this.props.stage)}
 
                 </div>
             )
