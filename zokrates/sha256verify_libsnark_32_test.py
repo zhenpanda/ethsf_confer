@@ -1,19 +1,15 @@
-from pypy_sha256_test import int_to_bytes, bits_val, H_bytes, BLOCK_BYTES
-from zokrates import zokrates, int_to_bits
+from pypy_sha256_test import int_to_bytes, bits_val, H_bytes, bytes_to_words, BLOCK_BYTES
+from zokrates import zokrates, int_to_bits, bytes_to_uint
 
-def int_to_bits(x):
-  block = int_to_bytes(x, BLOCK_BYTES)
-  right = block[len(block) - 4:]
-  return bits_val(right)
 
 def test_sha256(x):
   block = int_to_bytes(x, BLOCK_BYTES)
   hash = H_bytes(block)
-  # print ' '.join(bits_val(hash))
 
   cmd = "./zokrates compute-witness -i sha256verify_libsnark_32.out -o sha256verify_libsnark_32.witness -a \\\n"
   cmd += "%s \\\n" % ' '.join(int_to_bits(x))
-  cmd += ' '.join(bits_val(hash))
+  # cmd += ' '.join([str(x) for x in bytes_to_words(hash)])
+  cmd += str(bytes_to_uint(hash))
   print cmd
   zokrates(cmd)
 

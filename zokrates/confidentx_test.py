@@ -1,7 +1,7 @@
 from subprocess import CalledProcessError
 
 from pypy_sha256_test import int_to_bytes, bits_val, H_bytes, BLOCK_BYTES
-from zokrates import zokrates, int_to_bits
+from zokrates import zokrates, int_to_bits, bytes_to_uint
 
 def test_confidentx(bb, ba, v, isSender):
   hbb = H_bytes(int_to_bytes(bb, BLOCK_BYTES))
@@ -12,9 +12,9 @@ def test_confidentx(bb, ba, v, isSender):
   cmd += "%s \\\n" % ' '.join(int_to_bits(bb))
   cmd += "%s \\\n" % ' '.join(int_to_bits(ba))
   cmd += "%s \\\n" % ' '.join(int_to_bits(v))
-  cmd += "%s \\\n" % ' '.join(bits_val(hbb))
-  cmd += "%s \\\n" % ' '.join(bits_val(hba))
-  cmd += "%s \\\n" % ' '.join(bits_val(hv))
+  cmd += "%s \\\n" % bytes_to_uint(hbb)
+  cmd += "%s \\\n" % bytes_to_uint(hba)
+  cmd += "%s \\\n" % bytes_to_uint(hv)
   cmd += str(1 if isSender else 0)
   print cmd
   zokrates(cmd)
