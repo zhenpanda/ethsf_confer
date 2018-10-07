@@ -32,6 +32,8 @@ To initiate a transfer, say between Alice to Bob, Alice would need to create a p
 
 Since only hashes are stored on chain, nobody would have knowledge about Alice and Bob's balances before or after a transaction, nor would anyone has knowledge on the transaction value between Alice and Bob. On the other hand, both Alice and Bob knows the transaction value but neither of them would know each other's balance either.
 
+![proof of confidential transaction](src/assets/images/zk_proof_confidential_tx.png)
+
 ```solidity
 // verifyTx(...proof parameters..., public inputs: [balanceBeforeHash, balanceAfterHash, transferValueHash, isSenderFlag])
 
