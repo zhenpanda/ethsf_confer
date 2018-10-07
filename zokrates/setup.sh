@@ -1,11 +1,14 @@
 #! env /bin/bash
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+cd $DIR/..
+
 zokrates compile --gadgets=sha256 -i zokrates/confidentx.code -o confidentx.out --light --optimized
 
-zokrates setup -i confidentx.out
-zokrates export-verifier
+cp zokrates/*.key .
+#zokrates setup -i confidentx.out
+#zokrates export-verifier
 
 #zokrates generate-proof -w confidentx.witness
 
-cd api
-cargo run
+cargo run --bin api
