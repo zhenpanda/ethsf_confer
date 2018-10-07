@@ -1,0 +1,6 @@
+// only using add, no need to flatten
+def main(field a, private field b) -> (field):
+  field c = a + b + a + 4
+  field d = a + c + a + b
+  a == 5
+  return b + c + d
