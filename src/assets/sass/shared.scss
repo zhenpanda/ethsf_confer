@@ -116,6 +116,22 @@ html {
     height: 48em;
     background: #e3f3fa;
     border: 0.1em solid #a9e5fd;
+
+    .send-proof {
+        border-radius: 0.75em;
+        border: 0.1em solid #94d5f3;
+        height: 8em;
+        margin: 1em;
+        background: white;
+    }
+    .person {
+        padding: 1em;
+        color: #177aa1;
+    }
+    .amount {
+        padding-left: 1em;
+        color: #2ca6d6;
+    }
 }
 
 .head-piece {
@@ -170,6 +186,12 @@ html {
         margin-top: 1.1em;
         font-size: 1.1em;    
         color: #3189b3;
+    }
+    .input-text-display {
+        margin-top: 0.5em;
+        margin-left: 1em;
+        font-size: 1.1em;    
+        color: #3189b3; 
     }
     .icon {
         margin-right: 0.5em;

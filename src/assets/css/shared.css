@@ -104,6 +104,18 @@ html {
   height: 48em;
   background: #e3f3fa;
   border: 0.1em solid #a9e5fd; }
+  .explorer .send-proof {
+    border-radius: 0.75em;
+    border: 0.1em solid #94d5f3;
+    height: 8em;
+    margin: 1em;
+    background: white; }
+  .explorer .person {
+    padding: 1em;
+    color: #177aa1; }
+  .explorer .amount {
+    padding-left: 1em;
+    color: #2ca6d6; }
 
 .head-piece {
   height: 34mm;
@@ -152,6 +164,11 @@ html {
     margin-top: -0.1em; }
   .info .input-text {
     margin-top: 1.1em;
+    font-size: 1.1em;
+    color: #3189b3; }
+  .info .input-text-display {
+    margin-top: 0.5em;
+    margin-left: 1em;
     font-size: 1.1em;
     color: #3189b3; }
   .info .icon {

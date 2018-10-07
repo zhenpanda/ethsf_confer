@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { SyncLoader } from 'react-spinners';
 
-class Wallet extends Component {
+class WalletToo extends Component {
     
     state = {loading: null}
 
@@ -10,8 +10,8 @@ class Wallet extends Component {
         this.setState({loading: true});
         setTimeout(() => {
             this.setState({loading: null});
-            makeProof();
-        },5000)
+            // makeProof();
+        },3000)
     }
 
     displaySendProof(makeProof) {
@@ -20,17 +20,15 @@ class Wallet extends Component {
                 <div className="input-block">
                     <div className="row">
                         <div className="col s1 m1" />
-                        <div className="col s5 m5">
-                            <div className="input-text"><span className="fa fa-paper-plane-o icon" /> Send Amount:</div>
+                        <div className="col s6 m6">
+                            <div className="input-text"><span className="fa fa-paper-plane-o icon" /> Recive Amount:</div>
                         </div>
                         <div className="col s3 m3">
                             <div className="input-area">
-                                <div className="input-field">
-                                    <input />
-                                </div>
+                                <div className="input-text-display">10</div>
                             </div>
                         </div>
-                        <div className="col s4 m4" />
+                        <div className="col s3 m3" />
                     </div>
                 </div>
                 <div className="input-address">
@@ -57,8 +55,7 @@ class Wallet extends Component {
                             onClick={() => this.showAnim(makeProof)}>Create Proof Data</div>
                         </div>
                         <div className="col s5 m5">
-                            <div className="create-send-btn"
-                            onClick={() =>this.props.moveStage("first")}>Send Tx Msg</div>
+                            <div className="create-send-btn">Send Tx Msg</div>
                         </div> 
                         <div className="col s1 m1" /> 
                     </div>
@@ -136,4 +133,4 @@ class Wallet extends Component {
 
     }
 }
-export default Wallet;
+export default WalletToo;

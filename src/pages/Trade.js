@@ -8,17 +8,21 @@ import Body from './Body';
 
 class Trade extends Component {
 
-    displaySide() {
-    }   
-
     render() {
         return(
             <div className="container">
 
-                <Header />
+                <Header 
+                    displayTargetSide={this.displayTargetSide}
+                    switchUser={this.props.switchUser}
+                    user={this.props.user}
+                />
                 <Body 
                     proof={this.props.proof}
                     makeProof={this.props.makeProof}
+                    user={this.props.user}
+                    moveStage={this.props.moveStage}
+                    stage={this.props.stage}
                 />
             
             </div>
@@ -26,9 +30,11 @@ class Trade extends Component {
     }
 }
 function mapStateToProps(state) {
-    console.log(state);
+    // console.log(state);
     return {
-        proof: state.test.data
+        proof: state.test.data,
+        user: state.user.data,
+        stage: state.stage.data
     }
   }
   export default connect(mapStateToProps, actions)(Trade);
