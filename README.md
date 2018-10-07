@@ -105,12 +105,20 @@ It is easy to extend the `transfer` function to `exchange` function because the 
 
 ## Credits and Challenges
 
+### zkSNARK and Confidential Transaction
+
 The idea of this implementation was introduced in [Introduction to zk-SNARKs with examples
 ](https://media.consensys.net/introduction-to-zksnarks-with-examples-3283b554fc3b). However, as [zkSNARKs: Driver's Ed.](https://github.com/jstoxrocky/zksnarks_example) points out, the zkSNARKS verification program provided is in psuedo-code and there is no common or easy-to-access resources how one would deploy this in practice. While the article helpfully laid out an example using [ZoKrates](https://github.com/JacobEberhardt/ZoKrates), it did not go as far as implementing the confidential transaction itself.
 
+### ERC-998 Token Composable
+
 We also took inspiration from [ERC-998](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-998.md) the **Composable Non-Fungible Token Standard**, where a TopDown composable tokens can receive, hold and transfer ERC20/ERC721 tokens. This concept allowed us to extend confidential transactions from tokens with built-in confidentiality to all tokens in the wild.
 
+### ZoKrates: the Good, the Bad and the Ugly
+
 We ran into a lot of issues when using **ZoKrates** since its API is constantly evolving and the high-level DSL, which compiles to R1CS constraints, has no documentation. In particular, **ZoKrates** only recently intergrated [sha256](https://github.com/JacobEberhardt/ZoKrates/pull/72) implementation from [libsnark](https://github.com/scipr-lab/libsnark) and it only exposes the `sha256libsnark` function with 512 bit level inputs and 256 outputs. However, it does not yet has support for types in the DSL, and all variables are defined as `field` which stores values as a 256 bit big integer internally. This unfornautely translates into `uint256` in Solidity when ZoKrates generates the verifier. ZoKrates DSL also does not have bitwise operator yet thus it is very difficult to pack and unpack between bits and bytes. While we can do this with simulated bitwise operations using arithematics, the compiler quickly runs into issues with too many nested statements or stack overflow. We reached a compromise by using storing 32bits integers in each `field/uint256` and effectively blows up the public input size (and gas) by a factor of 8. Fortunately, both [improved type system](https://github.com/JacobEberhardt/ZoKrates/issues/124) and [improved libsnark integration](https://github.com/JacobEberhardt/ZoKrates/issues/19) are being actively looked at.
+
+Due to unintended large size of public inputs, we also ran into stack too deep compilation error in Solidity. We expect this problem to go away by itself once ZoKrates implements the above mentioned features. It is also possible to improve ZoKrates' code generation to break generated Solidity functions into smaller pieces.
 
 ## Source Code and How to Run
 
@@ -139,6 +147,21 @@ H = Pairing.G1Point(0x12eb0ccbb1e0dea1713af139ddfc7ef85c20ff1823cea0ac4c946d422f
 K = Pairing.G1Point(0x231fcee067a2df72d4392f19c6260cb7ab55fe3684b625c7b6499c1d20437e3e, 0x1140d353ecab18fdd3231203b06416d5d4d456c2a6ee17b5ae5d3f38ed02442);
 ```
 
+Note every account is meant to run its own prover to ensure that private inputs remain private. This requires the compiled proof program, and its proving and verification key to be published. A trusted 3rd party would need to perform the setup and discard the toxic waste properly. Again due to the current limitation of ZoKrates, our proof uses up to 90k variables and constraints and the proof program takes 30MB. Therefore, we chose not to commit the compiled version of our proof program.
+
 ### Frontend
 
 `yarn` and `yarn start` will start the dev server which communicates with the backend to generate proof based on the frontend inputs.
+
+## Roadmap
+
+- [x] zkSNARK that proves sender balance change validity
+- [x] ZKSNARK that proves receiver balance change validity
+- [ ] Solidity contract that
+  - [x] handles transfer for a single asset
+  - [ ] handles multi-asset transfer
+  - [ ] handles asset deposit and withdrawal
+- [ ] Blinding factor for
+  - [ ] transaction value
+  - [ ] account balance
+- [ ] WebAssembly based prover
