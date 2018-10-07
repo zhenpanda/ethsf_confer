@@ -1,4 +1,4 @@
-#![feature(plugin, decl_macro)]
+#![feature(plugin, decl_macro, custom_derive)]
 #![plugin(rocket_codegen)]
 #[macro_use] extern crate rocket;
 extern crate rocket_cors;
@@ -9,12 +9,16 @@ extern crate serde_derive;
 
 extern crate serde;
 extern crate serde_json;
+extern crate rand;
 
 use rocket_contrib::{Json, Value};
 use std::process::Command;
 use std::path::{Path, PathBuf};
 use rocket::http::Method;
 use rocket_cors::{AllowedOrigins, AllowedHeaders};
+use std::iter;
+use rand::{Rng, thread_rng};
+use rand::distributions::Alphanumeric;
 
 #[derive(Serialize)]
 struct Proof {
@@ -38,10 +42,10 @@ fn compile(file: String) -> String {
         .arg("-c")
         .arg(format!("zokrates compile -i {:?}", absolute_path.display()))
         .output()
-        .unwrap_or_else(|e| { 
-            panic!("failed to execute process: {}", e) 
+        .unwrap_or_else(|e| {
+            panic!("failed to execute process: {}", e)
         });
-    format!("stdout: {} \n {}", 
+    format!("stdout: {} \n {}",
         String::from_utf8_lossy(&output.stdout),
         String::from_utf8_lossy(&output.stderr))
 }
@@ -52,10 +56,10 @@ fn compute_witness(arg1: String) -> String {
         .arg("-c")
         .arg(format!("zokrates compute-witness -a {}", arg1))
         .output()
-        .unwrap_or_else(|e| { 
-            panic!("failed to execute process: {}", e) 
+        .unwrap_or_else(|e| {
+            panic!("failed to execute process: {}", e)
         });
-    format!("stdout: {} \n {}", 
+    format!("stdout: {} \n {}",
         String::from_utf8_lossy(&output.stdout),
         String::from_utf8_lossy(&output.stderr))
 }
@@ -66,8 +70,8 @@ fn setup() -> Json<Value> {
         .arg("-c")
         .arg(format!("zokrates setup"))
         .output()
-        .unwrap_or_else(|e| { 
-            panic!("failed to execute process: {}", e) 
+        .unwrap_or_else(|e| {
+            panic!("failed to execute process: {}", e)
         });
     let return_val = String::from_utf8_lossy(&output.stdout);
     let first_phase: Vec<&str> = return_val.split("{").collect();
@@ -107,8 +111,8 @@ fn generate_proof() -> String {
         .arg("-c")
         .arg(format!("zokrates generate-proof"))
         .output()
-        .unwrap_or_else(|e| { 
-            panic!("failed to execute process: {}", e) 
+        .unwrap_or_else(|e| {
+            panic!("failed to execute process: {}", e)
         });
     let return_val = format!("{}", String::from_utf8_lossy(&output.stdout));
     return_val
@@ -124,7 +128,41 @@ fn generate_proof() -> String {
     //    H:String::from("a"),
     //    K:String::from("a")
     //})**/
+}
 
+#[get("/generate-proof-with-witness/<arg>")]
+fn generate_proof_with_witness(arg: String) -> String {
+    let mut rng = thread_rng();
+    let rand_string: String = iter::repeat(())
+        .map(|()| rng.sample(Alphanumeric))
+        .take(7)
+        .collect();
+    let witness_input = Command::new("sh")
+        .arg("-c")
+        .arg(format!("python zokrates/confidentx_arg.py {}", arg))
+        .output()
+        .unwrap_or_else(|e| {
+            panic!("failed to execute process: {}", e)
+        });
+    let witness_output = Command::new("sh")
+        .arg("-c")
+        .arg(format!("zokrates compute-witness -i confidentx.out -o {}.witness -a {}", rand_string, String::from_utf8_lossy(&witness_input.stdout)))
+        .output()
+        .unwrap_or_else(|e| {
+            panic!("failed to execute process: {}", e)
+        });
+    let output = Command::new("sh")
+        .arg("-c")
+        .arg(format!("zokrates generate-proof -w {}.witness", rand_string))
+        .output()
+        .unwrap_or_else(|e| {
+            panic!("failed to execute process: {}", e)
+        });
+    // format!("{}", String::from_utf8_lossy(&output.stdout))
+
+    format!("stdout: {} \n {}",
+        String::from_utf8_lossy(&output.stdout),
+        String::from_utf8_lossy(&output.stderr))
 }
 
 #[get("/export-verifier")]
@@ -133,29 +171,34 @@ fn export_verifier() -> String {
         .arg("-c")
         .arg(format!("zokrates export-verifier"))
         .output()
-        .unwrap_or_else(|e| { 
-            panic!("failed to execute process: {}", e) 
+        .unwrap_or_else(|e| {
+            panic!("failed to execute process: {}", e)
         });
-    format!("stdout: {} \n {}", 
+    format!("stdout: {} \n {}",
         String::from_utf8_lossy(&output.stdout),
         String::from_utf8_lossy(&output.stderr))
 }
 
+#[get("/")]
+fn cors<'a>() -> &'a str {
+    "Hello CORS"
+}
+
 fn main() {
-    let (allowed_origins, failed_origins) = AllowedOrigins::some(&["*"]);
+    // let (allowed_origins, failed_origins) = AllowedOrigins::some(&["*"]);
 
     // You can also deserialize this
-    let options = rocket_cors::Cors {
-        allowed_origins: allowed_origins,
-        allowed_methods: vec![Method::Get].into_iter().map(From::from).collect(),
-        allowed_headers: AllowedHeaders::some(&["Authorization", "Accept"]),
-        allow_credentials: true,
-        ..Default::default()
-    };
+    // let options = rocket_cors::Cors {
+    //     // allowed_origins: allowed_origins,
+    //     // allowed_methods: vec![Method::Get].into_iter().map(From::from).collect(),
+    //     // allowed_headers: AllowedHeaders::some(&["Authorization", "Accept"]),
+    //     allow_credentials: true,
+    //     ..Default::default()
+    // };
+    let options = rocket_cors::Cors::default();
 
     rocket::ignite()
-        .mount("/", routes![compile, compute_witness, setup, generate_proof, export_verifier])
+        .mount("/", routes![cors, compile, compute_witness, setup, generate_proof, export_verifier, generate_proof_with_witness])
         .attach(options)
         .launch();
 }
-

@@ -4,6 +4,12 @@
 ![Jenkins](https://img.shields.io/jenkins/s/https/jenkins.kyroy.com/job/ZoKrates/job/master.svg?label=master)
 ![Jenkins](https://img.shields.io/jenkins/s/https/jenkins.kyroy.com/job/ZoKrates/job/develop.svg?label=develop)
 
+```
+cd api
+cargo run
+// 8000
+//
+```
 
 Zokrates is a toolbox for zkSNARKs on Ethereum.
 
@@ -23,7 +29,9 @@ Using Docker is currently the recommended way to get started with Zokrates.
 ```bash
 docker run -ti -p 8000:8000 zokrates/zokrates /bin/bash
 ```
+
 Or build yourself with the following commands.
+
 ```bash
 git clone https://github.com/JacobEberhardt/ZoKrates
 cd ZoKrates
@@ -32,15 +40,17 @@ docker run -ti zokrates /bin/bash
 cd ZoKrates/target/release
 ```
 
-
 # Example
 
 To execute the program, perform the setup for the program, generate a proof
+
 ```
 def add(a, b, c):
   return a + b + c
 ```
+
 with `add(1, 2, 3)`, call
+
 ```
 ./zokrates compile -i 'add.code_path'
 ./zokrates compute-witness -a 1 2 3
@@ -59,6 +69,7 @@ You can see an overview of the available subcommands by running
 ```
 
 #### `compile`
+
 ```
 ./zokrates compile -i /path/to/add.code
 ```
@@ -68,6 +79,7 @@ Compile a `.code` file.
 Creates a compiled `.code` file at `./out.code`.
 
 #### `compute-witness`
+
 ```
 ./zokrates compute-witness -a 1 2
 ```
@@ -78,6 +90,7 @@ A witness is a valid assignment of the variables, which include the results of t
 Creates a witness file at `./witness`
 
 #### `setup`
+
 ```
 ./zokrates setup
 ```
@@ -87,6 +100,7 @@ Generates a trusted setup for the compiled program found at `./out.code`.
 Creates a proving key and a verifying key at `./proving.key` and `./verifying.key`.
 
 #### `export-verifier`
+
 ```
 ./zokrates export-verifier
 ```
@@ -96,6 +110,7 @@ Using the verifying key at `./verifying.key`, generates a Solidity contract enab
 Creates a verifier contract at `./verifier.sol`
 
 #### `generate-proof`
+
 ```
 ./zokrates generate-proof
 ```
@@ -103,6 +118,7 @@ Creates a verifier contract at `./verifier.sol`
 Using the proving key at `./proving.key`, generates a proof for a computation of the compiled program `./out.code` resulting in `./witness`.
 
 Returns the proof, for example:
+
 ```
 A = 0x45582d7906c967b1fd1cac0aad3efefa526e4cd888b8ecb5907b46c2eb1f781, 0x8158089a63a6aafa4afc3bbfd5ebf392e5ef61d0c5faf2e2445c9112450f29c
 A_p = 0x5e4fe0bfa79a571b8918138ee5d7b3d0ad394c9bb8f7d2e1549f7e3c3bab7e9, 0x1708b5ba3d138e433406c792f679ae6902fc9f7c6131305a9a5f826dbe2d71fb
@@ -116,6 +132,7 @@ K = 0x1868436121f271e9fbf78a8f75bb4077e2d4f208891793fd5b468afc3b05c0e4, 0x1021c3
 
 Passed to the verifier contract, this proof can be checked.
 For example, using `web3`, a call would look like the following:
+
 ```
 Verifier.at(<verifier contract address>).verifyTx(A, A_p, B, B_p, C, C_p, H, K, [...publicInputs, ...outputs])
 ```
@@ -125,10 +142,13 @@ Where `A, ..., K` are defined as above (adding brackets and quotes: `A = ["0x123
 # Testing
 
 Run normal tests with
+
 ```
 cargo test
 ```
+
 and run long and expensive tests with
+
 ```
 cargo test -- --ignored
 ```
