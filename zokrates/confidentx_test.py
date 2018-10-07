@@ -1,3 +1,5 @@
+from subprocess import CalledProcessError
+
 from pypy_sha256_test import int_to_bytes, bits_val, H_bytes, BLOCK_BYTES
 from zokrates import zokrates, int_to_bits
 
@@ -20,4 +22,15 @@ def test_confidentx(bb, ba, v, isSender):
 if __name__ == '__main__':
   test_confidentx(1, 0, 1, True)
   test_confidentx(10, 11, 1, False)
-  test_confidentx(4, 6, 1, True)
+  try:
+    test_confidentx(4, -2, 6, True)
+  except (CalledProcessError):
+    pass
+  try:
+    test_confidentx(4, 6, 1, True)
+  except (CalledProcessError):
+    pass
+  try:
+    test_confidentx(1, 0, 1, False)
+  except (CalledProcessError):
+    pass
