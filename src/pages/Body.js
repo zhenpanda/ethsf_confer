@@ -5,16 +5,32 @@ import WalletToo from './WalletToo';
 class Body extends Component {
 
     displayOnExplorer(stage) {
-        if(this.props.stage) {
-            return(
-                <div>
-                    <div className="send-proof moveFromTopFade delay200">
-                        <div className="person">Sender: Alice</div>
-                        <div className="amount">Sending Amount: 10</div>
-                        <div className="amount">Reciver: Bob</div>
-                    </div>
-                </div>
-            )
+        console.log(stage)
+        if(stage) {
+
+            switch(stage) {
+                case "first":
+                    return(
+                        <div>
+                            <div className="send-proof moveFromTopFade delay100">
+                                <div className="person">Sender: Alice</div>
+                                <div className="amount">Sending Amount: 10</div>
+                                <div className="amount">Reciver: Bob</div>
+                            </div>
+                        </div>
+                    )
+                case "second":
+                    return(
+                        <div>
+                            <div className="send-proof moveFromTopFade delay200">
+                                <div className="person">Sender: Bob</div>
+                                <div className="amount">Sending: Proof</div>
+                                <div className="amount">Reciver: Alice</div>
+                            </div>
+                        </div>
+                )     
+            }
+
         }
 
     }
@@ -52,6 +68,8 @@ class Body extends Component {
                 <WalletToo 
                     display="visiable" 
                     balance="5"
+                    makeProofToo={this.props.makeProofToo}
+                    prooftoo={this.props.prooftoo}
                 />
             )
         }

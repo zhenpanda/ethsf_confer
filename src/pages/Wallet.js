@@ -11,7 +11,7 @@ class Wallet extends Component {
         setTimeout(() => {
             this.setState({loading: null});
             makeProof();
-        },5000)
+        },2000)
     }
 
     displaySendProof(makeProof) {

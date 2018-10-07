@@ -10,7 +10,7 @@ class WalletToo extends Component {
         this.setState({loading: true});
         setTimeout(() => {
             this.setState({loading: null});
-            // makeProof();
+            makeProof();
         },3000)
     }
 
@@ -24,7 +24,7 @@ class WalletToo extends Component {
                             <div className="input-text"><span className="fa fa-paper-plane-o icon" /> Recive Amount:</div>
                         </div>
                         <div className="col s3 m3">
-                            <div className="input-area">
+                            <div className="input-area-two">
                                 <div className="input-text-display">10</div>
                             </div>
                         </div>
@@ -35,12 +35,12 @@ class WalletToo extends Component {
                     <div className="row">
                         <div className="col s1 m1" />
                         <div className="col s5 m5">
-                            <div className="input-text"><span className="fa fa fa-address-book-o icon" /> Send Address:</div>
+                            <div className="input-text"><span className="fa fa fa-address-book-o icon" /> Sender Address:</div>
                         </div>
                         <div className="col s6 m6">
-                            <div className="input-area">
+                            <div className="input-area-two">
                                 <div className="input-field">
-                                    <input />
+                                    <input defaultValue="0x6c32931E748f2f1098BC934cb8De0bCb5696E1f64f03ada043fdbd5a405cd23e"/>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,9 @@ class WalletToo extends Component {
                             onClick={() => this.showAnim(makeProof)}>Create Proof Data</div>
                         </div>
                         <div className="col s5 m5">
-                            <div className="create-send-btn">Send Tx Msg</div>
+                            <div className="create-send-btn"
+                            onClick={() =>this.props.moveStage("second")}>
+                            Send Tx Msg</div>
                         </div> 
                         <div className="col s1 m1" /> 
                     </div>
@@ -118,9 +120,9 @@ class WalletToo extends Component {
                         </div>
                     </div>
 
-                    {this.displaySendProof(this.props.makeProof)}
+                    {this.displaySendProof(this.props.makeProofToo)}
 
-                    {this.displayRecivedData(this.props.proof)}
+                    {this.displayRecivedData(this.props.prooftoo)}
 
                 </div>
             )

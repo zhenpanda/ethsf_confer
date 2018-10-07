@@ -162,6 +162,13 @@ html {
     border: 0.1em solid #94d5f3; }
   .info .input-field {
     margin-top: -0.1em; }
+  .info .input-area-two {
+    margin-top: 0.5em;
+    height: 3em;
+    border: 0.1em solid #eeeeee;
+    background: #5cbfe6; }
+    .info .input-area-two input:not([type]) {
+      color: white !important; }
   .info .input-text {
     margin-top: 1.1em;
     font-size: 1.1em;
@@ -170,7 +177,7 @@ html {
     margin-top: 0.5em;
     margin-left: 1em;
     font-size: 1.1em;
-    color: #3189b3; }
+    color: white; }
   .info .icon {
     margin-right: 0.5em; }
   .info input:not([type]) {

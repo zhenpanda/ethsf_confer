@@ -9,7 +9,7 @@ class Header extends Component {
 
     copyAddress(inputName) {
         if(inputName === "Alice") {
-            navigator.clipboard.writeText("0x6c32931E748f2f1098BC934cb8De0bCb5696E1f6");    
+            navigator.clipboard.writeText("0x6c32931E748f2f1098BC934cb8De0bCb5696E1f64f03ada043fdbd5a405cd23e");    
         }else{
             navigator.clipboard.writeText("0x24e6429ad5d8d1efc64f03ada043fdbd5a405cd23f40264ddd6dbce28863554c");
         }

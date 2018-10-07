@@ -19,7 +19,9 @@ class Trade extends Component {
                 />
                 <Body 
                     proof={this.props.proof}
+                    prooftoo={this.props.prooftoo}
                     makeProof={this.props.makeProof}
+                    makeProofToo={this.props.makeProofToo}
                     user={this.props.user}
                     moveStage={this.props.moveStage}
                     stage={this.props.stage}
@@ -33,6 +35,7 @@ function mapStateToProps(state) {
     // console.log(state);
     return {
         proof: state.test.data,
+        prooftoo: state.test.prooftoo,
         user: state.user.data,
         stage: state.stage.data
     }
