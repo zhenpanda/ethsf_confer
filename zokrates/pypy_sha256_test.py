@@ -46,9 +46,6 @@ def generate_sha256_gadget_tests(s):
     block = int_to_bytes(s, BLOCK_BYTES)
     left = block[:HASH_BYTES]
     right = block[HASH_BYTES:]
-    # left = gen_random_bytes(HASH_BYTES)
-    # right = gen_random_bytes(HASH_BYTES)
-    # right[HASH_BYTES - 1] = 1
     hash = H_bytes(left + right)
 
     print "%s \\" % ' '.join(bits_val(left))

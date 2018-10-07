@@ -1,40 +1,14 @@
+// check number sums in grouped words
+
 import "./sha256/utils/32/add.code" as ADD32
+import "./sha256/binary/xor.code" as XOR
 
 def main(field a31, field a30, field a29, field a28, field a27, field a26, field a25, field a24, field a23, field a22, field a21, field a20, field a19, field a18, field a17, field a16, field a15, field a14, field a13, field a12, field a11, field a10, field a9, field a8, field a7, field a6, field a5, field a4, field a3, field a2, field a1, field a0, field b31, field b30, field b29, field b28, field b27, field b26, field b25, field b24, field b23, field b22, field b21, field b20, field b19, field b18, field b17, field b16, field b15, field b14, field b13, field b12, field b11, field b10, field b9, field b8, field b7, field b6, field b5, field b4, field b3, field b2, field b1, field b0, field c31, field c30, field c29, field c28, field c27, field c26, field c25, field c24, field c23, field c22, field c21, field c20, field c19, field c18, field c17, field c16, field c15, field c14, field c13, field c12, field c11, field c10, field c9, field c8, field c7, field c6, field c5, field c4, field c3, field c2, field c1, field c0) -> (field):
 
-  o31, o30, o29, o28, o27, o26, o25, o24, o23, o22, o21, o20, o19, o18, o17, o16, o15, o14, o13, o12, o11, o10, o9, o8, o7, o6, o5, o4, o3, o2, o1, o0 = ADD32(a7, a6, a5, a4, a3, a2, a1, a0, a15, a14, a13, a12, a11, a10, a9, a8, a23, a22, a21, a20, a19, a18, a17, a16, a31, a30, a29, a28, a27, a26, a25, a24, b7, b6, b5, b4, b3, b2, b1, b0, b15, b14, b13, b12, b11, b10, b9, b8, b23, b22, b21, b20, b19, b18, b17, b16, b31, b30, b29, b28, b27, b26, b25, b24)
+  o7, o6, o5, o4, o3, o2, o1, o0, o15, o14, o13, o12, o11, o10, o9, o8, o23, o22, o21, o20, o19, o18, o17, o16, o31, o30, o29, o28, o27, o26, o25, o24 = ADD32(a7, a6, a5, a4, a3, a2, a1, a0, a15, a14, a13, a12, a11, a10, a9, a8, a23, a22, a21, a20, a19, a18, a17, a16, a31, a30, a29, a28, a27, a26, a25, a24, b7, b6, b5, b4, b3, b2, b1, b0, b15, b14, b13, b12, b11, b10, b9, b8, b23, b22, b21, b20, b19, b18, b17, b16, b31, b30, b29, b28, b27, b26, b25, b24)
 
- c31 == o31
- c30 == o30
- c29 == o29
- c28 == o28
- c27 == o27
- c26 == o26
- c25 == o25
- c24 == o24
- c23 == o23
- c22 == o22
- c21 == o21
- c20 == o20
- c19 == o19
- c18 == o18
- c17 == o17
- c16 == o16
- c15 == o15
- c14 == o14
- c13 == o13
- c12 == o12
- c11 == o11
- c10 == o10
- c9 == o9
- c8 == o8
- c7 == o7
- c6 == o6
- c5 == o5
- c4 == o4
- c3 == o3
- c2 == o2
- c1 == o1
- c0 == o0
+field s = XOR(c31, o31) + XOR(c30, o30) + XOR(c29, o29) + XOR(c28, o28) + XOR(c27, o27) + XOR(c26, o26) + XOR(c25, o25) + XOR(c24, o24) + XOR(c23, o23) + XOR(c22, o22) + XOR(c21, o21) + XOR(c20, o20) + XOR(c19, o19) + XOR(c18, o18) + XOR(c17, o17) + XOR(c16, o16) + XOR(c15, o15) + XOR(c14, o14) + XOR(c13, o13) + XOR(c12, o12) + XOR(c11, o11) + XOR(c10, o10) + XOR(c9, o9) + XOR(c8, o8) + XOR(c7, o7) + XOR(c6, o6) + XOR(c5, o5) + XOR(c4, o4) + XOR(c3, o3) + XOR(c2, o2) + XOR(c1, o1) + XOR(c0, o0)
 
- return 1
+field out = if s == 0 then 1 else 0 fi
+
+return out
