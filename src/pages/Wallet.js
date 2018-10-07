@@ -81,7 +81,7 @@ class Wallet extends Component {
                         thumbMinSize={30}
                         universal={true}>
                         
-                        <div className="proof-data">{proof}</div>
+                        <div className="proof-data moveFromTopFade delay80">{proof}</div>
 
                     </Scrollbars>
                 </div>
