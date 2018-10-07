@@ -91,6 +91,10 @@ function transfer(
 
 Because Alice and Bob would initially deposit tokens into the smart contracts publicly, if Alice and Bob have not yet transacted within the smart contract, one can easily calculate their balances. However, each person can easily generate blinding transfers among their own accounts to dilute this information.
 
+### Multi-token anonymity
+
+So far our code has been focused on single asset but as we explained in the previous section, it is easy to extend to multi-asset using token composable standard. One challenge is that in the reference token composable implementation, the balances for each account is a mapping between token indices and corresponding balances. This unnecessarily leaks the information on which token accounts are transacting within the contract. We can mitigate this problem by committing every user's balance details in a sparse merkle tree where each leaf is indexed to an onboarded token. In this way, only the transacting parties will know which specific tokens were used in the transactions.
+
 ### Preimage Attack
 
 The current implementation hashes the balance and transfer value directly, which can be easily enumerated to find preimages of common hashes. This can be mitigated by introducing an one-time blinding factor that only Alice and Bob know to add on top of their transfer value, and separate personal blinding factor for balance confidentiality.
