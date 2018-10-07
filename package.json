@@ -22,6 +22,8 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
+    "react-spinners": "^0.4.5",
+    "react-toastify": "^4.4.0",
     "react-transitions": "^1.0.0",
     "redux": "^3.7.2",
     "redux-socket.io": "^1.4.0",

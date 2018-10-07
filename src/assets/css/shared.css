@@ -44,6 +44,12 @@ html {
   margin-left: 8.5em;
   width: 12em; }
 
+.sweet-loading {
+  position: absolute;
+  z-index: 100;
+  top: 70%;
+  left: 34.5%; }
+
 .section {
   margin-top: 2em;
   height: 5em;
@@ -103,7 +109,6 @@ html {
   height: 34mm;
   border-radius: 0.75em;
   border: 0.1em solid #ffffff;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2ca6d6+0,00b7ea+100 */
   background: #3bb3e2;
   /* Old browsers */
   background: -moz-linear-gradient(left, #71d4fc 0%, #1eb5df 100%);
@@ -130,7 +135,7 @@ html {
     color: white; }
 
 .info {
-  height: 20em;
+  height: 18em;
   background: white;
   border-bottom: 0.1em solid #94d5f3;
   position: relative;
@@ -152,7 +157,7 @@ html {
   .info .icon {
     margin-right: 0.5em; }
   .info input:not([type]) {
-    margin-left: 1.5em;
+    margin-left: 1em;
     color: #3189b3;
     border-bottom: none;
     width: 70%; }
@@ -163,10 +168,35 @@ html {
     margin: 0.25em;
     height: 5em;
     border-bottom: 0.1em solid #afe1f8; }
+  .info .create-proof-btn {
+    margin-top: 2em;
+    border-radius: 0.75em;
+    border: 0.08em solid #3189b3;
+    padding: 1em;
+    color: #3189b3;
+    font-size: 0.9em;
+    cursor: pointer;
+    text-align: center; }
+  .info .create-proof-btn:hover {
+    background: #e3f3fa; }
+  .info .create-send-btn {
+    margin-top: 2em;
+    border-radius: 0.75em;
+    padding: 1em;
+    font-size: 0.9em;
+    cursor: pointer;
+    color: white;
+    background: #48a1ca;
+    text-align: center; }
+  .info .create-send-btn:hover {
+    opacity: 0.8; }
 
 .lower {
   height: 18em;
   background: #f7f7f7; }
+  .lower .proof-data {
+    padding: 1em;
+    color: #48a1ca; }
 
 @media only screen and (max-width: 27em) {
   .container {

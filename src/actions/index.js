@@ -1,12 +1,15 @@
-import {TEST} from './types';
+import {TEST,SEND,PROOF} from './types';
 
-// export function fetchCase(targetCase) {
-//     return function(dispatch) {
-//       // console.log("Trigger fetchCase...");
-//       dispatch({
-//         type: CASE,
-//         payload: targetCase
-//       });
-//     }
-// }
+
+
+export function makeProof() {
+    return function(dispatch) {
+      console.log("Trigger fetchCase...");
+      let data = "{dd, \"\\n\\t\\tvk.A = Pairing.G2Poin([0x24e6429ad5d8d1efc64f03ada043fdbd5a405cd23f40264ddd6dbce28863554c, 0x2a5bada35a953e945e2f1344dc6807e89ca985cfff55415056ce6c044e34bb8d], [0x11f1ccdca9b163e14c083742259fd33a219edda102caf0afcf6b99eaeb83ee04, 0x150234b04905f3f3caeb3586088ad66732b8905faf654b1787158e9e6c76b36b]);\\n\\t\\tvk.B = Pairing.G1Poin(0x686d5d98ca98cd7cdd3dd7a1c0fceb995c42694c81111d9a6f90c8742015b62, 0x2202da66c262c227c541f4e832c61e76b5a645a2ad180b3c8031a7341222d31d);\\n\\t\\tvk.C = Pairing.G2Poin([0x28780c89af7dcd688ccdfebdc247f90db5de6637064217bec216d5a066c1ffc8, 0x1fb43ea24962d5f57aa22a4c2a2fdd445eb25c6396328b611a87217755746245], [0xc7f5861bfa0d2893534913e04f58f129b63b574e86850b597d7e6fa6f50ab2c, 0x25e0eefd1e5f248efc9bf74b53840542f32532671e5693e3faa53722edd95f92]);\\n\\t\\tvk.gamma = Pairing.G2Poin([0xed410d65c3a727cd2af16c6fa453bb6cc44393df9f5eacf7ccac9f5adf01ae8, 0x20ccb8b4c30c84ea51f112632d4ca0633727cfb8029cde937485b96d8b4745b0], [0x1e418806b9841a65d0ac7be15cfaa314e8cff395bf3dfa188ca6a23fd8dfc310, 0x22c1e5823129ad75efcb8bd5f2642906715dba42a9b9fd2f60f57b8cfbcff917]);\\n\\t\\tvk.gammaBea1 = Pairing.G1Poin(0xd9cfdf4679f6e99527eafd2365e14d5796c045b191968ee966b7f6ff8211b6d, 0x3e6f44cde8256c1d350385f28a1140000cfe7375fb98fb684120b00f7dbccb);\\n\\t\\tvk.gammaBea2 = Pairing.G2Poin([0x1164f85cfd93ca4bf464520205a625bf765e3f72ce300240a5a4d972d08b097e, 0xabd1a2e487812fecad592edebde86e0cc69475820492c9099e73dcb7e3467ca], [0x49f91cbca84b4cc422ac9a1f2d4b3b5bca577649ad1fd206a725c47f49f2259, 0xb0f264647db907408d7c03c5461f13c4c54b897cad24432795042dafeb6eb8]);\\n\\t\\tvk.Z = Pairing.G2Poin([0x2b094d9c3e4aa5968838ac6d85ffebf0522041ec718be368502a3b9bf980e308, 0x752b7e490c1a079e0bbee3b32b8862b20338568db1d3a96644e53787e8e8dd8], [0x21d01c3a35dcd384a3b876c20f0e2d9c622798478eb704699a2993b480a04962, 0x1b26f133a0dcbf046c4c5272bc7702b5e9d36274a28536267bfcf6b617f57650]);\\n\\t\\tvk.IC = new Pairing.G1Poin[](3);\\n\\t\\tvk.IC[0] = Pairing.G1Poin(0x2b0f48f7c61624bcd1dc8ae13482229483ec405511c8a101be774eea1b19b316, 0x2d16290e2f729e492a0871c656602326b1936591e9aec8c61b6172868850a3a8);\\n\\t\\tvk.IC[1] = Pairing.G1Poin(0x20c944a68c42b34c225605ed150548b707b2ed9d2de72a72ac006667328b6e6c, 0xf163fad3396066450e6960d5137a6ea291552543a9d9496e99ca2ce4b198c6c);\\n\\t\\tvk.IC[2] = Pairing.G1Poin(0x1e9d8d211e3bc833c77712aa5bf9d0609a44aa0851bcc7e4bf5b3aa5db230941, 0x4f5f57a24c9bc4acad8435b64f93c92665ea7f246e2ca9622242ce008430f4b);\\n\\t\\t\", }"; 
+      dispatch({
+        type: PROOF,
+        payload: data
+      });
+    }
+}
 

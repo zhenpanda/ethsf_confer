@@ -12,6 +12,8 @@ class Body extends Component {
                         <Wallet 
                             display="visiable" 
                             balance="100"
+                            proof={this.props.proof}
+                            makeProof={this.props.makeProof}
                         />
                     </div>
                     
