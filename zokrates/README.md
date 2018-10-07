@@ -6,9 +6,12 @@ docker run -ti -v $HOME/workspace/ethsf_confer:/tmp zokrates /bin/bash
 ./zokrates compile --gadgets=sha256 -i /tmp/zokrates/sum_to_32.code -o sum_to_32.out --light && cp sum_to_32.out /tmp/zokrates/
 ./zokrates compile --gadgets=sha256 -i /tmp/zokrates/ge_32.code -o ge_32.out --light && cp ge_32.out /tmp/zokrates/
 ./zokrates compile --gadgets=sha256 -i /tmp/zokrates/split_bits.code -o split_bits.out --light && cp split_bits.out /tmp/zokrates/
-./zokrates compile --gadgets=sha256 -i /tmp/zokrates/confidentx.code -o confidentx.out --light && cp confidentx.out /tmp/zokrates/
+./zokrates compile --gadgets=sha256 -i /tmp/zokrates/confidentx.code -o confidentx.out --light --optimized && cp confidentx.out /tmp/zokrates/
 
-./zokrates
+./zokrates generate-proof -w confidentx.witness
+
+./zokrates setup -i confidentx.out
+./zokrates export-verifier
 
 ./zokrates compute-witness -i sha256verify_libsnark.out -o sha256verify_libsnark.witness -a \
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 \

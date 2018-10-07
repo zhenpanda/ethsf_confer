@@ -8,8 +8,8 @@ def test_sha256(x):
 
   cmd = "./zokrates compute-witness -i sha256verify_libsnark_32.out -o sha256verify_libsnark_32.witness -a \\\n"
   cmd += "%s \\\n" % ' '.join(int_to_bits(x))
-  # cmd += ' '.join([str(x) for x in bytes_to_words(hash)])
-  cmd += str(bytes_to_uint(hash))
+  cmd += ' '.join([str(x) for x in bytes_to_words(hash)])
+  #cmd += str(bytes_to_uint(hash))
   print cmd
   zokrates(cmd)
 
